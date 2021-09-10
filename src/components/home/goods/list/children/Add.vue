@@ -127,6 +127,7 @@ export default {
     }
   },
   created() {
+    console.log('this.$route.parmas :>> ', this.$route.params.id)
     this.getCateList()
   },
   methods: {

@@ -61,7 +61,8 @@ const routes = [
         component: GoodsList
       },
       {
-        path: '/goods/add',
+        path: '/goods/add/:id',
+        name: 'add',
         component: Add
       },
       {

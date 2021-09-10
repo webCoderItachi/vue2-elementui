@@ -118,7 +118,8 @@ export default {
       this.getGoofsList()
     },
     goAddpage() {
-      this.$router.push('goods/add')
+      this.$router.push({ name: 'add', params: { id: 1 } })
+      // this.$router.push('goods/add')
     }
   }
 }
