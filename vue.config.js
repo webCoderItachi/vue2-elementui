@@ -1,21 +1,24 @@
-const { tap } = require("lodash")
+const { tap } = require('lodash')
 
 module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        "assets": '@/assets',
-        "common": '@/common',
-        "components": '@/components',
-        "views": '@/views',
-        "network": '@/network',
+        assets: '@/assets',
+        common: '@/common',
+        components: '@/components',
+        views: '@/views',
+        network: '@/network'
       }
     }
   },
   // 发布模式
   chainWebpack: config => {
     config.when(process.env.NODE_ENV === 'production', config => {
-      config.entry('app').clear().add('./src/main-prod.js')
+      config
+        .entry('app')
+        .clear()
+        .add('./src/main-prod.js')
       config.set('externals', {
         vue: 'Vue',
         'vue-router': 'VueRouter',
@@ -34,11 +37,14 @@ module.exports = {
 
     // 开发模式
     config.when(process.env.NODE_ENV === 'development', config => {
-    config.entry('app').clear().add('./src/main-dev.js')
-    config.plugin('html').tap(args => {
-      args[0].isProd = false
-      return args
+      config
+        .entry('app')
+        .clear()
+        .add('./src/main-dev.js')
+      config.plugin('html').tap(args => {
+        args[0].isProd = false
+        return args
+      })
     })
-    })
-   }
+  }
 }
